@@ -2,17 +2,14 @@ import Input from './input.tsx';
 import {Project} from '../models/project.model.ts';
 import {useState} from 'react';
 import dayjs from 'dayjs';
-import {useDispatch, useSelector} from 'react-redux';
-import {selectCurrentProject} from '../store/projects/projectSelectors.ts';
-import {setLoading} from '../store/projects/projectSlice.ts';
+import {useProjectContext} from '../contexts/project-details-context.tsx';
 
 interface ProjectFormProps {
     onEditComplete: () => void;
 }
 
 const ProjectForm = ({onEditComplete}: ProjectFormProps) => {
-    const project = useSelector(selectCurrentProject());
-    const dispatch = useDispatch();
+    const {project, setLoading} = useProjectContext();
     const [updatedProject, setUpdatedProject] = useState<Project>(project as Project);
 
     const setValue = (fieldName: string, value: string) => {
@@ -26,7 +23,7 @@ const ProjectForm = ({onEditComplete}: ProjectFormProps) => {
 
     const onSave = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
-        dispatch(setLoading(true));
+        setLoading(true);
         fetch(`https://ap-react.azurewebsites.net/projects/${project!.id}`, {
             method: 'PUT',
             body: JSON.stringify(updatedProject),
@@ -36,7 +33,7 @@ const ProjectForm = ({onEditComplete}: ProjectFormProps) => {
         }).then((res) => res.json() )
             .then(() => {
             }).finally(() => {
-            dispatch(setLoading(false));
+            setLoading(false);
             onEditComplete()
         })
     }

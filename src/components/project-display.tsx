@@ -1,11 +1,10 @@
-import {useSelector} from 'react-redux';
-import {selectCurrentProject} from '../store/projects/projectSelectors.ts';
+import {useProjectContext} from '../contexts/project-details-context.tsx';
 
 export interface ProjectDisplayProps {
     onEdit: () => void;
 }
 const ProjectDisplay = ({onEdit}: ProjectDisplayProps) => {
-    const project = useSelector(selectCurrentProject());
+    const {project} = useProjectContext();
     return <><div className="max-w-sm rounded overflow-hidden shadow-lg bg-white p-4">
         <div className="font-bold text-xl mb-2">{project?.name}</div>
         <p className="text-gray-700 text-base">{project?.description}</p>
