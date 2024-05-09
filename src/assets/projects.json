@@ -1,0 +1,31 @@
+[
+    {
+      "id": 1,
+      "name": "Community Garden Initiative",
+      "description": "Build and maintain a community garden to promote local food production and healthy living.",
+      "startDate": "0001-01-01T00:00:00",
+      "endDate": "0001-01-01T00:00:00"
+    },
+    {
+      "id": 2,
+      "name": "Website Redesign",
+      "description": "Modernize the company website to improve user experience and brand image.",
+      "startDate": "0001-01-01T00:00:00",
+      "endDate": "2024-05-16T00:00:00"
+    },
+    {
+      "id": 3,
+      "name": "Open-Source Library Development",
+      "description": "Develop a reusable and open-source library for [Insert specific functionality].",
+      "startDate": "0001-01-01T00:00:00",
+      "endDate": "2023-01-12T09:00:00"
+    },
+    {
+      "id": 4,
+      "name": "AP Project",
+      "description": "Develop a project management tool.",
+      "startDate": "0001-01-01T00:00:00",
+      "endDate": "2023-01-12T09:00:00"
+    }
+  ]
+  
