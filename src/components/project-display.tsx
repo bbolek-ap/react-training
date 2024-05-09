@@ -1,19 +1,19 @@
-import {useProjectContext} from '../contexts/project-details-context.tsx';
+import {Project} from '../models/project.model.ts';
 
 export interface ProjectDisplayProps {
+    project: Project;
     onEdit: () => void;
 }
-const ProjectDisplay = ({onEdit}: ProjectDisplayProps) => {
-    const {project} = useProjectContext();
+const ProjectDisplay = ({project, onEdit}: ProjectDisplayProps) => {
     return <><div className="max-w-sm rounded overflow-hidden shadow-lg bg-white p-4">
-        <div className="font-bold text-xl mb-2">{project?.name}</div>
-        <p className="text-gray-700 text-base">{project?.description}</p>
+        <div className="font-bold text-xl mb-2">{project.name}</div>
+        <p className="text-gray-700 text-base">{project.description}</p>
         <div className="pt-4">
         <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">
-          Start: {new Date(project!.startDate).toLocaleDateString()}
+          Start: {new Date(project.startDate).toLocaleDateString()}
         </span>
             <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700">
-          End: {new Date(project!.endDate).toLocaleDateString()}
+          End: {new Date(project.endDate).toLocaleDateString()}
         </span>
         </div>
     </div>

@@ -4,7 +4,6 @@ import {useEffect, useState} from "react";
 import { Project } from "../models/project.model";
 import { Outlet } from "react-router-dom";
 import { useSearchParams } from "react-router-dom";
-import {ProjectDetailsContextProvider} from '../contexts/project-details-context.tsx';
 
 const ProjectList = () => {
   const [filter, setFilter] = useState<string>("");
@@ -40,9 +39,7 @@ const ProjectList = () => {
         )}
       </div>
       <div>
-          <ProjectDetailsContextProvider>
-            <Outlet />
-          </ProjectDetailsContextProvider>
+          <Outlet />
       </div>
     </div>
   );

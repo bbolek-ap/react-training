@@ -1,13 +1,14 @@
 import { useParams } from "react-router-dom";
+import { Project } from "../models/project.model";
 import {useCallback, useState} from "react";
 import { useEffect } from "react";
 import ProjectDisplay from './project-display.tsx';
 import ProjectForm from './project-form.tsx';
-import {useProjectContext} from '../contexts/project-details-context.tsx';
 
 const ProjectDetails = () => {
   const { projectId } = useParams();
-  const {setProject, project, setLoading, isLoading} = useProjectContext();
+  const [project, setProject] = useState<Project>();
+  const [isLoading, setLoading] = useState(false);
   const [editMode, setEditMode] = useState<boolean>(false);
 
   const fetchProject = useCallback(() => {
@@ -32,12 +33,12 @@ const ProjectDetails = () => {
   }
 
   if (editMode) {
-    return <ProjectForm key={projectId} onEditComplete={() => {
+    return <ProjectForm key={projectId} project={project} onEditComplete={() => {
       setEditMode(false);
       fetchProject()
     }} />
   } else {
-    return <ProjectDisplay key={projectId} onEdit={() => setEditMode(true)} />
+    return <ProjectDisplay key={projectId} project={project} onEdit={() => setEditMode(true)} />
   }
 };
 
