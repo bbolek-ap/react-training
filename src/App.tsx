@@ -5,6 +5,7 @@ import ProjectList from "./components/project-list";
 import Input from "./components/input";
 
 function App() {
+  console.log("Test Codemod");
   return (
     <div>
       <Header></Header>
